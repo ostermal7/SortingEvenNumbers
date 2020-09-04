@@ -1,0 +1,40 @@
+package com.javarush.task.task13.task1326;
+
+/* 
+Сортировка четных чисел из файла
+*/
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        // напишите тут ваш код
+        ArrayList<Integer> list = new ArrayList<>();
+        try {
+            BufferedReader rd = new BufferedReader(new InputStreamReader(System.in));
+            String s=rd.readLine();
+            BufferedReader readFile=new BufferedReader(new InputStreamReader(new FileInputStream(s)));
+            while ((s=readFile.readLine())!=null) {
+                int x = Integer.parseInt(s);
+                if (x % 2 == 0) {
+                    list.add(x);
+                }
+            }
+            Collections.sort(list);
+            for (int numb: list) {
+                System.out.println(numb);
+            }
+            readFile.close();
+            rd.close();
+        } catch (IOException e) {
+            e.getStackTrace();
+        }
+        // здесь сортирнуть пузырем
+    }
+}
